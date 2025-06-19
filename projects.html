@@ -72,10 +72,10 @@
         <!-- Filter Buttons -->
         <div class="flex flex-wrap justify-center gap-3 mb-12">
             <button class="filter-btn active px-4 py-2 rounded-full border border-blue-500 text-blue-500 hover:bg-blue-500 hover:text-white transition-all" data-filter="all">All Projects</button>
-            <button class="filter-btn px-4 py-2 rounded-full border border-blue-500 text-blue-500 hover:bg-blue-500 hover:text-white transition-all" data-filter="branding">Branding</button>
-            <button class="filter-btn px-4 py-2 rounded-full border border-blue-500 text-blue-500 hover:bg-blue-500 hover:text-white transition-all" data-filter="print">Print Design</button>
+            <button class="filter-btn px-4 py-2 rounded-full border border-blue-500 text-blue-500 hover:bg-blue-500 hover:text-white transition-all" data-filter="Rebranding">Rebranding</button>
+            <button class="filter-btn px-4 py-2 rounded-full border border-blue-500 text-blue-500 hover:bg-blue-500 hover:text-white transition-all" data-filter="Event">Events</button>
             <button class="filter-btn px-4 py-2 rounded-full border border-blue-500 text-blue-500 hover:bg-blue-500 hover:text-white transition-all" data-filter="digital">Digital Art</button>
-            <button class="filter-btn px-4 py-2 rounded-full border border-blue-500 text-blue-500 hover:bg-blue-500 hover:text-white transition-all" data-filter="packaging">Packaging</button>
+            <button class="filter-btn px-4 py-2 rounded-full border border-blue-500 text-blue-500 hover:bg-blue-500 hover:text-white transition-all" data-filter="Posters">Posters</button>
         </div>
 
         <!-- Projects Grid -->
@@ -122,85 +122,78 @@
         const projects = [
             {
                 id: 1,
-                title: "EcoLife Brand Identity",
-                category: "branding",
-                description: "Complete brand identity for an eco-friendly lifestyle brand, including logo, color palette, typography, and brand guidelines.",
+                title: "La poste tn",
+                category: "Rebranding",
+                description: "Complete rebrand for the tunisian post office, including logo, typography, and brand guidelines.",
                 tags: ["Logo Design", "Brand Guidelines", "Typography"],
-                image: "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
+                image: "la poste.jpg",
                 gallery: [
-                    "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
-                    "https://images.unsplash.com/photo-1542744173-05336a5b1c59?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
-                    "https://images.unsplash.com/photo-1542744173-0f8e268966e5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
+                    "vis.jpg",
+                    "doc cover.png",
+                    "credit cards.jpg"
                 ],
                 link: "#"
             },
             {
                 id: 2,
-                title: "Urban Coffee Packaging",
-                category: "packaging",
-                description: "Modern and minimalist packaging design for a premium coffee brand targeting urban professionals.",
+                title: "Dour Tounes",
+                category: "Event",
+                description: "A Historical and cultural Tunisian event for history lovers , travel enjoyers and studens.",
                 tags: ["Packaging", "Typography", "Illustration"],
-                image: "https://images.unsplash.com/photo-1517705008128-361805f42e86?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80",
+                image: "dour tounes.jpg",
                 gallery: [
-                    "https://images.unsplash.com/photo-1517705008128-361805f42e86?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80",
-                    "https://images.unsplash.com/photo-1517705008128-361805f42e86?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80",
-                    "https://images.unsplash.com/photo-1517705008128-361805f42e86?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80"
+                    "Business Card.png",
+                    "tarboucha.jpg",
+                    "app.jpg"
                 ],
                 link: "#"
             },
             {
                 id: 3,
-                title: "Music Festival Posters",
-                category: "print",
-                description: "Series of vibrant posters for a summer music festival, featuring bold typography and psychedelic illustrations.",
+                title: "Interstellar movie poster",
+                category: "Posters",
+                description: "A posters for The famous movie Interstellar.",
                 tags: ["Poster Design", "Typography", "Illustration"],
-                image: "https://images.unsplash.com/photo-1533174079986-5053a5585461?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80",
+                image: "interstellar.jpg",
                 gallery: [
-                    "https://images.unsplash.com/photo-1533174079986-5053a5585461?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80",
-                    "https://images.unsplash.com/photo-1533174079986-5053a5585461?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80",
-                    "https://images.unsplash.com/photo-1533174079986-5053a5585461?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80"
-                ],
-                link: "#"
-            },
-            {
-                id: 4,
-                title: "Digital Art Series",
-                category: "digital",
-                description: "Collection of digital artworks exploring the relationship between technology and human emotions.",
-                tags: ["Digital Art", "Illustration", "Concept Art"],
-                image: "https://images.unsplash.com/photo-1541963463532-d68292c34b19?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=688&q=80",
-                gallery: [
-                    "https://images.unsplash.com/photo-1541963463532-d68292c34b19?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=688&q=80",
-                    "https://images.unsplash.com/photo-1541963463532-d68292c34b19?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=688&q=80",
-                    "https://images.unsplash.com/photo-1541963463532-d68292c34b19?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=688&q=80"
+
                 ],
                 link: "#"
             },
             {
                 id: 5,
-                title: "Corporate Annual Report",
-                category: "print",
-                description: "Elegant and professional annual report design for a financial services company with data visualization.",
-                tags: ["Editorial Design", "Infographics", "Typography"],
-                image: "https://images.unsplash.com/photo-1542621334-a254cf47733d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
+                title: "My hero academia Poster",
+                category: "Posters",
+                description: "vibrant poster for the animated series My hero academia.",
+                tags: ["Poster Design", "Typography", "Illustration"],
+                image: "All might.jpg",
                 gallery: [
-                    "https://images.unsplash.com/photo-1542621334-a254cf47733d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
-                    "https://images.unsplash.com/photo-1542621334-a254cf47733d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
-                    "https://images.unsplash.com/photo-1542621334-a254cf47733d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
+                ],
+                link: "#"
+            },
+            {
+                id: 4,
+                title: "Juice AD",
+                category: "digital",
+                description: "An AD for a Tunisian juice brand.",
+                tags: ["Digital Art", "Illustration", "Concept Art"],
+                image: "tropico2.png",
+                gallery: [
+                    
                 ],
                 link: "#"
             },
             {
                 id: 6,
-                title: "Mobile App UI/UX",
+                title: "Web App UI/UX",
                 category: "digital",
                 description: "User interface and experience design for a fitness tracking mobile application with custom illustrations.",
-                tags: ["UI Design", "UX Design", "Mobile App"],
-                image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
+                tags: ["UI Design", "UX Design", "Web App"],
+                image: "Monitor Screen.jpg",
                 gallery: [
-                    "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
-                    "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
-                    "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
+                    "la poste site.jpg",
+                    "la poste site 2.jpg",
+                    "la poste site 3.jpg"
                 ],
                 link: "#"
             }
