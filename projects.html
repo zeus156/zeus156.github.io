@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yassine's projects</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .project-card {
+            transition: all 0.3s ease;
+            transform-style: preserve-3d;
+        }
+        .project-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        .project-image {
+            height: 250px;
+            object-fit: cover;
+            transition: all 0.5s ease;
+        }
+        .project-card:hover .project-image {
+            transform: scale(1.05);
+        }
+        .filter-btn.active {
+            background-color: #3b82f6;
+            color: white;
+        }
+        .modal-overlay {
+            background-color: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(5px);
+        }
+        .modal-content {
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-in {
+            animation: fadeIn 0.5s ease-out forwards;
+        }
+        .home-btn {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 100;
+            background-color: #3b82f6;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 9999px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .home-btn:hover {
+            background-color: #2563eb;
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body class="bg-gray-50 font-sans">
+    <div class="container mx-auto px-4 py-12">
+        <a href="portfolio.html" class="home-btn flex items-center">
+        <i class="fas fa-arrow-left mr-2"></i>
+        Return Home
+    </a>
+
+    <div class="container mx-auto px-4 py-20">
+        <!-- Filter Buttons -->
+        <div class="flex flex-wrap justify-center gap-3 mb-12">
+            <button class="filter-btn active px-4 py-2 rounded-full border border-blue-500 text-blue-500 hover:bg-blue-500 hover:text-white transition-all" data-filter="all">All Projects</button>
+            <button class="filter-btn px-4 py-2 rounded-full border border-blue-500 text-blue-500 hover:bg-blue-500 hover:text-white transition-all" data-filter="branding">Branding</button>
+            <button class="filter-btn px-4 py-2 rounded-full border border-blue-500 text-blue-500 hover:bg-blue-500 hover:text-white transition-all" data-filter="print">Print Design</button>
+            <button class="filter-btn px-4 py-2 rounded-full border border-blue-500 text-blue-500 hover:bg-blue-500 hover:text-white transition-all" data-filter="digital">Digital Art</button>
+            <button class="filter-btn px-4 py-2 rounded-full border border-blue-500 text-blue-500 hover:bg-blue-500 hover:text-white transition-all" data-filter="packaging">Packaging</button>
+        </div>
+
+        <!-- Projects Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="projects-container">
+            <!-- Projects will be dynamically inserted here -->
+        </div>
+    </div>
+
+    <!-- Project Modal -->
+    <div id="project-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 modal-overlay">
+        <div class="bg-white rounded-xl shadow-2xl w-full max-w-4xl modal-content relative">
+            <button id="close-modal" class="absolute top-4 right-4 text-gray-500 hover:text-gray-700 text-2xl">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="p-8">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <div>
+                        <img id="modal-image" src="" alt="" class="w-full h-auto rounded-lg shadow-lg">
+                    </div>
+                    <div>
+                        <h2 id="modal-title" class="text-3xl font-bold mb-4 text-gray-800"></h2>
+                        <p id="modal-category" class="text-blue-500 font-semibold mb-2"></p>
+                        <p id="modal-description" class="text-gray-600 mb-6"></p>
+                        <div class="flex flex-wrap gap-2 mb-6" id="modal-tags"></div>
+                        <div class="flex space-x-4">
+                            <a id="modal-link" href="#" target="_blank" class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition flex items-center">
+                                <i class="fas fa-external-link-alt mr-2"></i> View Project
+                            </a>
+                            <button class="px-4 py-2 border border-gray-300 rounded hover:bg-gray-100 transition flex items-center">
+                                <i class="fas fa-heart mr-2"></i> Save
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-8 grid grid-cols-2 md:grid-cols-3 gap-4" id="modal-gallery">
+                    <!-- Additional images will be inserted here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Sample project data
+        const projects = [
+            {
+                id: 1,
+                title: "EcoLife Brand Identity",
+                category: "branding",
+                description: "Complete brand identity for an eco-friendly lifestyle brand, including logo, color palette, typography, and brand guidelines.",
+                tags: ["Logo Design", "Brand Guidelines", "Typography"],
+                image: "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
+                gallery: [
+                    "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
+                    "https://images.unsplash.com/photo-1542744173-05336a5b1c59?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
+                    "https://images.unsplash.com/photo-1542744173-0f8e268966e5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
+                ],
+                link: "#"
+            },
+            {
+                id: 2,
+                title: "Urban Coffee Packaging",
+                category: "packaging",
+                description: "Modern and minimalist packaging design for a premium coffee brand targeting urban professionals.",
+                tags: ["Packaging", "Typography", "Illustration"],
+                image: "https://images.unsplash.com/photo-1517705008128-361805f42e86?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80",
+                gallery: [
+                    "https://images.unsplash.com/photo-1517705008128-361805f42e86?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80",
+                    "https://images.unsplash.com/photo-1517705008128-361805f42e86?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80",
+                    "https://images.unsplash.com/photo-1517705008128-361805f42e86?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80"
+                ],
+                link: "#"
+            },
+            {
+                id: 3,
+                title: "Music Festival Posters",
+                category: "print",
+                description: "Series of vibrant posters for a summer music festival, featuring bold typography and psychedelic illustrations.",
+                tags: ["Poster Design", "Typography", "Illustration"],
+                image: "https://images.unsplash.com/photo-1533174079986-5053a5585461?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80",
+                gallery: [
+                    "https://images.unsplash.com/photo-1533174079986-5053a5585461?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80",
+                    "https://images.unsplash.com/photo-1533174079986-5053a5585461?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80",
+                    "https://images.unsplash.com/photo-1533174079986-5053a5585461?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80"
+                ],
+                link: "#"
+            },
+            {
+                id: 4,
+                title: "Digital Art Series",
+                category: "digital",
+                description: "Collection of digital artworks exploring the relationship between technology and human emotions.",
+                tags: ["Digital Art", "Illustration", "Concept Art"],
+                image: "https://images.unsplash.com/photo-1541963463532-d68292c34b19?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=688&q=80",
+                gallery: [
+                    "https://images.unsplash.com/photo-1541963463532-d68292c34b19?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=688&q=80",
+                    "https://images.unsplash.com/photo-1541963463532-d68292c34b19?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=688&q=80",
+                    "https://images.unsplash.com/photo-1541963463532-d68292c34b19?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=688&q=80"
+                ],
+                link: "#"
+            },
+            {
+                id: 5,
+                title: "Corporate Annual Report",
+                category: "print",
+                description: "Elegant and professional annual report design for a financial services company with data visualization.",
+                tags: ["Editorial Design", "Infographics", "Typography"],
+                image: "https://images.unsplash.com/photo-1542621334-a254cf47733d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
+                gallery: [
+                    "https://images.unsplash.com/photo-1542621334-a254cf47733d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
+                    "https://images.unsplash.com/photo-1542621334-a254cf47733d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
+                    "https://images.unsplash.com/photo-1542621334-a254cf47733d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
+                ],
+                link: "#"
+            },
+            {
+                id: 6,
+                title: "Mobile App UI/UX",
+                category: "digital",
+                description: "User interface and experience design for a fitness tracking mobile application with custom illustrations.",
+                tags: ["UI Design", "UX Design", "Mobile App"],
+                image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
+                gallery: [
+                    "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
+                    "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
+                    "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
+                ],
+                link: "#"
+            }
+        ];
+
+        // DOM elements
+        const projectsContainer = document.getElementById('projects-container');
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const modal = document.getElementById('project-modal');
+        const closeModal = document.getElementById('close-modal');
+        const modalImage = document.getElementById('modal-image');
+        const modalTitle = document.getElementById('modal-title');
+        const modalCategory = document.getElementById('modal-category');
+        const modalDescription = document.getElementById('modal-description');
+        const modalTags = document.getElementById('modal-tags');
+        const modalLink = document.getElementById('modal-link');
+        const modalGallery = document.getElementById('modal-gallery');
+
+        // Display all projects initially
+        displayProjects(projects);
+
+        // Filter projects
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Update active button
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+                
+                const filter = button.dataset.filter;
+                if (filter === 'all') {
+                    displayProjects(projects);
+                } else {
+                    const filteredProjects = projects.filter(project => project.category === filter);
+                    displayProjects(filteredProjects);
+                }
+            });
+        });
+
+        // Display projects function
+        function displayProjects(projectsToDisplay) {
+            projectsContainer.innerHTML = '';
+            
+            projectsToDisplay.forEach((project, index) => {
+                const projectCard = document.createElement('div');
+                projectCard.className = `project-card bg-white rounded-xl overflow-hidden shadow-md animate-fade-in`;
+                projectCard.style.animationDelay = `${index * 0.1}s`;
+                
+                projectCard.innerHTML = `
+                    <div class="overflow-hidden">
+                        <img src="${project.image}" alt="${project.title}" class="w-full project-image">
+                    </div>
+                    <div class="p-6">
+                        <span class="text-xs font-semibold text-blue-500 uppercase tracking-wider">${project.category}</span>
+                        <h3 class="text-xl font-bold text-gray-800 mt-1 mb-2">${project.title}</h3>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            ${project.tags.map(tag => `<span class="text-xs px-2 py-1 bg-gray-100 rounded-full">${tag}</span>`).join('')}
+                        </div>
+                        <button class="view-project-btn w-full mt-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition" data-id="${project.id}">
+                            View Project
+                        </button>
+                    </div>
+                `;
+                
+                projectsContainer.appendChild(projectCard);
+            });
+
+            // Add event listeners to view buttons
+            document.querySelectorAll('.view-project-btn').forEach(button => {
+                button.addEventListener('click', () => {
+                    const projectId = parseInt(button.dataset.id);
+                    const project = projects.find(p => p.id === projectId);
+                    openModal(project);
+                });
+            });
+        }
+
+        // Open modal with project details
+        function openModal(project) {
+            modalImage.src = project.image;
+            modalImage.alt = project.title;
+            modalTitle.textContent = project.title;
+            modalCategory.textContent = project.category.charAt(0).toUpperCase() + project.category.slice(1);
+            modalDescription.textContent = project.description;
+            modalLink.href = project.link;
+            
+            // Clear and add tags
+            modalTags.innerHTML = '';
+            project.tags.forEach(tag => {
+                const tagElement = document.createElement('span');
+                tagElement.className = 'text-xs px-2 py-1 bg-gray-100 rounded-full';
+                tagElement.textContent = tag;
+                modalTags.appendChild(tagElement);
+            });
+            
+            // Clear and add gallery images
+            modalGallery.innerHTML = '';
+            project.gallery.forEach(image => {
+                const imgElement = document.createElement('img');
+                imgElement.src = image;
+                imgElement.alt = project.title;
+                imgElement.className = 'w-full h-32 object-cover rounded cursor-pointer hover:opacity-80 transition';
+                imgElement.addEventListener('click', () => {
+                    modalImage.src = image;
+                });
+                modalGallery.appendChild(imgElement);
+            });
+            
+            modal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        // Close modal
+        closeModal.addEventListener('click', () => {
+            modal.classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        });
+
+        // Close modal when clicking outside
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.classList.add('hidden');
+                document.body.style.overflow = 'auto';
+            }
+        });
+    </script>
+</body>
+</html>
