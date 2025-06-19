@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yassine Ben Naya | Graphic Designer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Custom CSS for animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .animate-fade-in {
+            animation: fadeIn 0.8s ease-out forwards;
+        }
+        
+        .delay-100 { animation-delay: 0.1s; }
+        .delay-200 { animation-delay: 0.2s; }
+        .delay-300 { animation-delay: 0.3s; }
+        .delay-400 { animation-delay: 0.4s; }
+        
+        /* Custom hover effect for work items */
+        .work-item {
+            transition: all 0.3s ease;
+        }
+        
+        .work-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 4px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 font-sans text-gray-800">
+    <!-- Navigation -->
+    <nav class="fixed w-full bg-white shadow-md z-50">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <div class="text-2xl font-bold text-indigo-600">YBN</div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#home" class="text-indigo-600 hover:text-indigo-800 transition">Home</a>
+                    <a href="#about" class="hover:text-indigo-600 transition">About</a>
+                    <a href="#work" class="hover:text-indigo-600 transition">Work</a>
+                    <a href="#projects" class="hover:text-indigo-600 transition">Projects</a>
+                    <a href="#icons" class="hover:text-indigo-600 transition">Icons</a>
+                    <a href="#posters" class="hover:text-indigo-600 transition">Posters</a>
+                    <a href="#contact" class="hover:text-indigo-600 transition">Contact</a>
+                </div>
+                <button class="md:hidden focus:outline-none" id="menu-btn">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+            <!-- Mobile menu -->
+            <div class="md:hidden hidden flex-col items-center py-4 space-y-4" id="mobile-menu">
+                <a href="#home" class="text-indigo-600 hover:text-indigo-800 transition">Home</a>
+                <a href="#about" class="hover:text-indigo-600 transition">About</a>
+                <a href="#work" class="hover:text-indigo-600 transition">Work</a>
+                <a href="#projects" class="hover:text-indigo-600 transition">Projects</a>
+                <a href="#icons" class="hover:text-indigo-600 transition">Icons</a>
+                <a href="#posters" class="hover:text-indigo-600 transition">Posters</a>
+                <a href="#contact" class="hover:text-indigo-600 transition">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="pt-24 pb-16 md:pt-32 md:pb-24 bg-gradient-to-r from-indigo-50 to-purple-50">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-10 md:mb-0 animate-fade-in">
+                    <h1 class="text-4xl md:text-5xl font-bold mb-4">Yassine Ben Naya</h1>
+                    <h2 class="text-2xl md:text-3xl text-indigo-600 mb-6">Graphic Designer & Visual Artist</h2>
+                    <p class="text-lg mb-8 text-gray-600">Creating visually stunning designs that tell stories and evoke emotions.</p>
+                    <a href="#work" class="bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-3 rounded-full font-medium transition shadow-lg">View My Work</a>
+                </div>
+                <div class="md:w-1/2 flex justify-center animate-fade-in delay-100">
+                    <div class="relative">
+                        <div class="w-64 h-64 md:w-80 md:h-80 bg-indigo-200 rounded-full overflow-hidden shadow-xl">
+                            <img src="me.jpg" 
+                                 alt="Yassine Ben Naya" 
+                                 class="w-full h-full object-cover">
+                        </div>
+                        <div class="absolute -bottom-5 -right-5 bg-white p-4 rounded-lg shadow-lg">
+                            <div class="flex items-center">
+                                <div class="w-3 h-3 bg-green-500 rounded-full mr-2"></div>
+                                <span class="text-sm font-medium">Available for work</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-16 bg-white">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-12 animate-fade-in">About Me</h2>
+            <div class="flex flex-col md:flex-row items-center animate-fade-in delay-100">
+                <div class="md:w-1/3 mb-8 md:mb-0 flex justify-center">
+                    <div class="w-64 h-64 rounded-full overflow-hidden shadow-lg">
+                        <img src="me.jpg" 
+                             alt="Yassine Ben Naya" 
+                             class="w-full h-full object-cover">
+                    </div>
+                </div>
+                <div class="md:w-2/3 md:pl-12">
+                    <h3 class="text-2xl font-semibold mb-4">Hello, I'm Yassine</h3>
+                    <p class="text-gray-600 mb-4">
+                        I'm a 23-year-old graphic design student in my first year at the Académie d'Art de Carthage (AAC). With a background in computer science (Bac Informatique), I bring a blend of technical knowledge and creative vision to my work. I'm passionate about visual storytelling, exploring design through digital media, typography, and branding. Always curious and eager to learn, I'm building my skills to create impactful, thoughtful design solutions.
+                    </p>
+                    <p class="text-gray-600 mb-6">
+                        I specialize in logo design, iconography, poster design, and brand development. My approach combines 
+                        traditional design principles with modern trends to create timeless yet contemporary visuals.
+                    </p>
+                    <div class="mb-6">
+                        <h4 class="font-semibold mb-2">Skills & Expertise:</h4>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full text-sm">Logo Design</span>
+                            <span class="bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full text-sm">Icon Design</span>
+                            <span class="bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full text-sm">Brand Identity</span>
+                            <span class="bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full text-sm">Typography</span>
+                            <span class="bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full text-sm">Poster Design</span>
+                            <span class="bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full text-sm">Illustration</span>
+                        </div>
+                    </div>
+                    <a href="#contact" class="inline-block border-2 border-indigo-600 text-indigo-600 hover:bg-indigo-600 hover:text-white px-6 py-2 rounded-full font-medium transition">Get In Touch</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Latest Work Section -->
+    <section id="work" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-4 animate-fade-in">Latest Work</h2>
+            <p class="text-center text-gray-600 mb-12 max-w-2xl mx-auto animate-fade-in delay-100">
+                A selection of my most recent design projects showcasing my versatility and creative approach.
+            </p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Work Item 1 -->
+                <div class="bg-white rounded-xl overflow-hidden shadow-md work-item animate-fade-in delay-200">
+                    <div class="h-48 overflow-hidden">
+                        <img src="la poste.jpg" 
+                             alt="Brand Identity Project" 
+                             class="w-full h-full object-cover transition duration-500 hover:scale-105">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">La poste tunisienne</h3>
+                        <p class="text-gray-600 mb-4">Complete rebrand for the tunisian post office.</p>
+                        <span class="text-sm text-indigo-600 font-medium">Rebranding</span>
+                    </div>
+                </div>
+                
+                <!-- Work Item 2 -->
+                <div class="bg-white rounded-xl overflow-hidden shadow-md work-item animate-fade-in delay-300">
+                    <div class="h-48 overflow-hidden">
+                        <img src="la poste site.jpg" 
+                             alt="Mobile App Design" 
+                             class="w-full h-full object-cover transition duration-500 hover:scale-105">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">La poste App UI/UX</h3>
+                        <p class="text-gray-600 mb-4">User interface and experience design for The tunisian post office web application.</p>
+                        <span class="text-sm text-indigo-600 font-medium">UI/UX Design</span>
+                    </div>
+                </div>
+                
+                <!-- Work Item 3 -->
+                <div class="bg-white rounded-xl overflow-hidden shadow-md work-item animate-fade-in delay-400">
+                    <div class="h-48 overflow-hidden">
+                        <img src="dour tounes.jpg" 
+                             alt="Packaging Design" 
+                             class="w-full h-full object-cover transition duration-500 hover:scale-105">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Dour tounes</h3>
+                        <p class="text-gray-600 mb-4">A Historical and cultural Tunisian event.</p>
+                        <span class="text-sm text-indigo-600 font-medium">Event Design</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12 animate-fade-in delay-500">
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-16 bg-white">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-4 animate-fade-in">Featured Projects</h2>
+            <p class="text-center text-gray-600 mb-12 max-w-2xl mx-auto animate-fade-in delay-100">
+                Comprehensive design projects showcasing my problem-solving approach and creative execution.
+            </p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Project 1 -->
+                <div class="bg-gray-50 rounded-xl overflow-hidden shadow-lg work-item animate-fade-in delay-200">
+                    <div class="h-64 overflow-hidden">
+                        <img src="technova.jpg" 
+                             alt="Brand Redesign Project" 
+                             class="w-full h-full object-cover transition duration-500 hover:scale-105">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Tech nova web app</h3>
+                        <p class="text-gray-600 mb-4">User interface and experience design for a tech shop named tech nova , created and designed by me.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm text-indigo-600 font-medium">UI/UX</span>
+                            <a href="#" class="text-sm font-medium hover:text-indigo-600">View →</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 2 -->
+                <div class="bg-gray-50 rounded-xl overflow-hidden shadow-lg work-item animate-fade-in delay-300">
+                    <div class="h-64 overflow-hidden">
+                        <img src="tropico2.png" 
+                             alt="Web Design Project" 
+                             class="w-full h-full object-cover transition duration-500 hover:scale-105">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Juice AD poster</h3>
+                        <p class="text-gray-600 mb-4">An AD for a Tunisian juice brand.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm text-indigo-600 font-medium">AD Design</span><br><br><br>
+                            <a href="#" class="text-sm font-medium hover:text-indigo-600">View →</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12 animate-fade-in delay-400">
+                <a href="projects.html" class="inline-block bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-3 rounded-full font-medium transition shadow-lg">
+                    View All Projects
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Icons Section -->
+    <section id="icons" class="py-16 bg-white">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-4 animate-fade-in">Icon Design</h2>
+            <p class="text-center text-gray-600 mb-12 max-w-2xl mx-auto animate-fade-in delay-100">
+                Carefully crafted icon sets designed for clarity, consistency, and visual impact.
+            </p>
+            
+            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6">
+                <!-- Icon 1 -->
+                <div class="bg-gray-50 p-6 rounded-xl flex flex-col items-center work-item animate-fade-in delay-200">
+                    <div class="w-16 h-16 mb-4 flex items-center justify-center text-indigo-600">
+                        <i class="fas fa-mobile-alt text-4xl"></i>
+                    </div>
+                    <span class="text-sm font-medium">Mobile</span>
+                </div>
+                
+                <!-- Icon 2 -->
+                <div class="bg-gray-50 p-6 rounded-xl flex flex-col items-center work-item animate-fade-in delay-250">
+                    <div class="w-16 h-16 mb-4 flex items-center justify-center text-indigo-600">
+                        <i class="fas fa-laptop text-4xl"></i>
+                    </div>
+                    <span class="text-sm font-medium">Laptop</span>
+                </div>
+                
+                <!-- Icon 3 -->
+                <div class="bg-gray-50 p-6 rounded-xl flex flex-col items-center work-item animate-fade-in delay-300">
+                    <div class="w-16 h-16 mb-4 flex items-center justify-center text-indigo-600">
+                        <i class="fas fa-camera text-4xl"></i>
+                    </div>
+                    <span class="text-sm font-medium">Camera</span>
+                </div>
+                
+                <!-- Icon 4 -->
+                <div class="bg-gray-50 p-6 rounded-xl flex flex-col items-center work-item animate-fade-in delay-350">
+                    <div class="w-16 h-16 mb-4 flex items-center justify-center text-indigo-600">
+                        <i class="fas fa-headphones text-4xl"></i>
+                    </div>
+                    <span class="text-sm font-medium">Audio</span>
+                </div>
+                
+                <!-- Icon 5 -->
+                <div class="bg-gray-50 p-6 rounded-xl flex flex-col items-center work-item animate-fade-in delay-400">
+                    <div class="w-16 h-16 mb-4 flex items-center justify-center text-indigo-600">
+                        <i class="fas fa-gamepad text-4xl"></i>
+                    </div>
+                    <span class="text-sm font-medium">Gaming</span>
+                </div>
+                
+                <!-- Icon 6 -->
+                <div class="bg-gray-50 p-6 rounded-xl flex flex-col items-center work-item animate-fade-in delay-450">
+                    <div class="w-16 h-16 mb-4 flex items-center justify-center text-indigo-600">
+                        <i class="fas fa-home text-4xl"></i>
+                    </div>
+                    <span class="text-sm font-medium">Home</span>
+                </div>
+                
+                <!-- Icon 7 -->
+                <div class="bg-gray-50 p-6 rounded-xl flex flex-col items-center work-item animate-fade-in delay-500">
+                    <div class="w-16 h-16 mb-4 flex items-center justify-center text-indigo-600">
+                        <i class="fas fa-car text-4xl"></i>
+                    </div>
+                    <span class="text-sm font-medium">Transport</span>
+                </div>
+                
+                <!-- Icon 8 -->
+                <div class="bg-gray-50 p-6 rounded-xl flex flex-col items-center work-item animate-fade-in delay-550">
+                    <div class="w-16 h-16 mb-4 flex items-center justify-center text-indigo-600">
+                        <i class="fas fa-utensils text-4xl"></i>
+                    </div>
+                    <span class="text-sm font-medium">Food</span>
+                </div>
+                
+                <!-- Icon 9 -->
+                <div class="bg-gray-50 p-6 rounded-xl flex flex-col items-center work-item animate-fade-in delay-600">
+                    <div class="w-16 h-16 mb-4 flex items-center justify-center text-indigo-600">
+                        <i class="fas fa-heartbeat text-4xl"></i>
+                    </div>
+                    <span class="text-sm font-medium">Health</span>
+                </div>
+                
+                <!-- Icon 10 -->
+                <div class="bg-gray-50 p-6 rounded-xl flex flex-col items-center work-item animate-fade-in delay-650">
+                    <div class="w-16 h-16 mb-4 flex items-center justify-center text-indigo-600">
+                        <i class="fas fa-plane text-4xl"></i>
+                    </div>
+                    <span class="text-sm font-medium">Travel</span>
+                </div>
+                
+                <!-- Icon 11 -->
+                <div class="bg-gray-50 p-6 rounded-xl flex flex-col items-center work-item animate-fade-in delay-700">
+                    <div class="w-16 h-16 mb-4 flex items-center justify-center text-indigo-600">
+                        <i class="fas fa-shopping-bag text-4xl"></i>
+                    </div>
+                    <span class="text-sm font-medium">Shopping</span>
+                </div>
+                
+                <!-- Icon 12 -->
+                <div class="bg-gray-50 p-6 rounded-xl flex flex-col items-center work-item animate-fade-in delay-750">
+                    <div class="w-16 h-16 mb-4 flex items-center justify-center text-indigo-600">
+                        <i class="fas fa-graduation-cap text-4xl"></i>
+                    </div>
+                    <span class="text-sm font-medium">Education</span>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12 animate-fade-in delay-800">
+                <a href="#" class="inline-block bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-3 rounded-full font-medium transition shadow-lg">
+                    Download Icon Set
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Posters Section -->
+    <section id="posters" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-4 animate-fade-in">Poster Design</h2>
+            <p class="text-center text-gray-600 mb-12 max-w-2xl mx-auto animate-fade-in delay-100">
+                Bold, expressive poster designs for events, exhibitions, and promotional campaigns.
+            </p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Poster 1 -->
+                <div class="bg-white rounded-xl overflow-hidden shadow-lg work-item animate-fade-in delay-200">
+                    <div class="h-80 overflow-hidden">
+                        <img src="All might.jpg" 
+                             alt="Anime Poster" 
+                             class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">My hero academia Poster</h3>
+                        <p class="text-gray-600 mb-4">Vibrant poster design for an Anime called My hero academia.</p>
+                        <span class="text-sm text-indigo-600 font-medium">Anime Poster</span>
+                    </div>
+                </div>
+                
+                <!-- Poster 2 -->
+                <div class="bg-white rounded-xl overflow-hidden shadow-lg work-item animate-fade-in delay-300">
+                    <div class="h-80 overflow-hidden">
+                        <img src="interstellar.jpg" 
+                             alt="Art Exhibition Poster" 
+                             class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">interstellar Poster</h3>
+                        <p class="text-gray-600 mb-4">Minimalist poster for The famous filmmaker Christopher Nolan's interstellar.</p>
+                        <span class="text-sm text-indigo-600 font-medium">Film Poster</span>
+                    </div>
+                </div>
+                
+                <!-- Poster 3 -->
+                <div class="bg-white rounded-xl overflow-hidden shadow-lg work-item animate-fade-in delay-400">
+                    <div class="h-80 overflow-hidden">
+                        <img src="spoiderman.jpg" 
+                             alt="Film Poster" 
+                             class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Cinematic Dreams</h3>
+                        <p class="text-gray-600 mb-4">Retro-inspired movie poster with dramatic lighting and cinematic composition for a Spider Man film.</p>
+                        <span class="text-sm text-indigo-600 font-medium">Film Poster</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12 animate-fade-in delay-500">
+                <a href="#" class="inline-block border-2 border-gray-300 hover:border-indigo-600 text-gray-700 hover:text-indigo-600 px-6 py-2 rounded-full font-medium transition">
+                    View Poster Collection
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-16 bg-white">
+        <div class="flex space-x-4">
+</div>
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-4 animate-fade-in">Get In Touch</h2>
+            <p class="text-center text-gray-600 mb-12 max-w-2xl mx-auto animate-fade-in delay-100">
+                Have a project in mind or want to collaborate? I'd love to hear from you!
+            </p>
+            
+            <div class="flex flex-col md:flex-row gap-12">
+                <div class="md:w-1/2 animate-fade-in delay-200">
+                    <form class="space-y-6">
+                        <div>
+                            <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Your Name</label>
+                            <input type="text" id="name" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500">
+                        </div>
+                        
+                        <div>
+                            <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email Address</label>
+                            <input type="email" id="email" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500">
+                        </div>
+                        
+                        <div>
+                            <label for="subject" class="block text-sm font-medium text-gray-700 mb-1">Subject</label>
+                            <input type="text" id="subject" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500">
+                        </div>
+                        
+                        <div>
+                            <label for="message" class="block text-sm font-medium text-gray-700 mb-1">Your Message</label>
+                            <textarea id="message" rows="5" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"></textarea>
+                        </div>
+                        
+                        <button type="submit" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-3 rounded-lg font-medium transition shadow-lg">
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+                
+                <div class="md:w-1/2 animate-fade-in delay-300">
+                    <div class="bg-gray-50 p-8 rounded-xl h-full">
+                        <h3 class="text-xl font-semibold mb-6">Contact Information</h3>
+                        
+                        <div class="space-y-6">
+                            <div class="flex items-start">
+                                <div class="flex-shrink-0 h-10 w-10 rounded-full bg-indigo-100 flex items-center justify-center text-indigo-600 mr-4">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-sm font-medium text-gray-500">Email</h4>
+                                    <a href="mailto:hello@yassinebn.com" class="text-base text-gray-800 hover:text-indigo-600">benneyayassine@gmail.com</a>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="flex-shrink-0 h-10 w-10 rounded-full bg-indigo-100 flex items-center justify-center text-indigo-600 mr-4">
+                                    <i class="fas fa-phone-alt"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-sm font-medium text-gray-500">Phone</h4>
+                                    <a href="tel:+1234567890" class="text-base text-gray-800 hover:text-indigo-600">+216 52 058 845</a>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="flex-shrink-0 h-10 w-10 rounded-full bg-indigo-100 flex items-center justify-center text-indigo-600 mr-4">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-sm font-medium text-gray-500">Location</h4>
+                                    <p class="text-base text-gray-800">La marsa, Tunis</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-8">
+                            <h4 class="text-sm font-medium text-gray-500 mb-4">Follow Me</h4>
+                            <div class="flex space-x-4">
+                                <a href="#" class="h-10 w-10 rounded-full bg-gray-200 hover:bg-indigo-600 hover:text-white flex items-center justify-center text-gray-700 transition">
+                                    <i class="fab fa-behance"></i>
+                                </a>
+                                <a href="#" class="h-10 w-10 rounded-full bg-gray-200 hover:bg-indigo-600 hover:text-white flex items-center justify-center text-gray-700 transition">
+                                    <i class="fab fa-dribbble"></i>
+                                </a>
+                                <a href="https://www.instagram.com/yassine_ben_naya/" target="_blank" class="h-10 w-10 rounded-full bg-gray-200 hover:bg-indigo-600 hover:text-white flex items-center justify-center text-gray-700 transition">
+        <i class="fab fa-instagram"></i>
+    </a>
+                                <a href="#" class="h-10 w-10 rounded-full bg-gray-200 hover:bg-indigo-600 hover:text-white flex items-center justify-center text-gray-700 transition">
+                                    <i class="fab fa-linkedin-in"></i>
+                                </a>
+                                <a href="#" class="h-10 w-10 rounded-full bg-gray-200 hover:bg-indigo-600 hover:text-white flex items-center justify-center text-gray-700 transition">
+                                    <i class="fab fa-twitter"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0">
+                    <div class="text-2xl font-bold text-indigo-400 mb-2">Yassine Ben Naya</div>
+                    <p class="text-gray-400">Graphic Designer & Visual Artist</p>
+                </div>
+                
+                <div class="flex flex-col items-center md:items-end">
+                    <div class="flex space-x-6 mb-4">
+                        <a href="#" class="text-gray-400 hover:text-white transition">Home</a>
+                        <a href="#about" class="text-gray-400 hover:text-white transition">About</a>
+                        <a href="#work" class="text-gray-400 hover:text-white transition">Work</a>
+                        <a href="#contact" class="text-gray-400 hover:text-white transition">Contact</a>
+                    </div>
+                    <p class="text-gray-500 text-sm">© 2023 Yassine Ben Naya. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button id="back-to-top" class="fixed bottom-8 right-8 bg-indigo-600 text-white w-12 h-12 rounded-full flex items-center justify-center shadow-lg transition opacity-0 invisible hover:bg-indigo-700">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script>
+        // Mobile menu toggle
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            mobileMenu.classList.toggle('flex');
+        });
+        
+        // Back to top button
+        const backToTopBtn = document.getElementById('back-to-top');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopBtn.classList.remove('opacity-0', 'invisible');
+                backToTopBtn.classList.add('opacity-100', 'visible');
+            } else {
+                backToTopBtn.classList.remove('opacity-100', 'visible');
+                backToTopBtn.classList.add('opacity-0', 'invisible');
+            }
+        });
+        
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    if (!mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                        mobileMenu.classList.remove('flex');
+                    }
+                }
+            });
+        });
+        
+        // Add animation class when elements come into view
+        const animateOnScroll = () => {
+            const elements = document.querySelectorAll('.animate-fade-in');
+            
+            elements.forEach(element => {
+                const elementPosition = element.getBoundingClientRect().top;
+                const screenPosition = window.innerHeight / 1.3;
+                
+                if (elementPosition < screenPosition) {
+                    element.style.opacity = '1';
+                }
+            });
+        };
+        
+        window.addEventListener('scroll', animateOnScroll);
+        window.addEventListener('load', animateOnScroll);
+    </script>
+</body>
+</html>
